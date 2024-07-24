@@ -1,5 +1,4 @@
 import { EnumBtnTypes } from '@/src/types/enums/BtnTypes';
-import Store from '../src/components/elements/Store/Store';
 import { BtnLink, Subtitle, Text, Title } from '@/src/components/ui';
 
 const HomePage = () => {
@@ -20,8 +19,6 @@ const HomePage = () => {
                     </BtnLink>
                 </div>
             </div>
-
-            <Store />
         </section>
     );
 };
