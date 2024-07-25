@@ -1,24 +1,18 @@
-import { useEffect, useMemo, useState } from 'react';
-import { AxiosResponse } from 'axios';
-import { IPeople } from '@/src/types/interfaces/People';
+import { useMemo } from 'react';
+import { usePagination } from '@/src/store/pagination';
 import { getNumbers } from '@/src/helpers/getNumbers';
 import { LuChevronLeft, LuChevronRight } from 'react-icons/lu';
 import cn from 'classnames';
 
 type Props = {
     peopleCount: number;
-    getPeople: (currentPage?: number) => Promise<AxiosResponse<IPeople, any>>;
 };
 
-const Pagination: React.FC<Props> = ({ peopleCount, getPeople = () => {} }) => {
-    const [currentPage, setCurrentPage] = useState(1);
-    const [startValue, setStartValue] = useState(1);
-    const [endValue, setEndValue] = useState(5);
+const Pagination: React.FC<Props> = ({ peopleCount }) => {
+    const { currentPage, startValue, endValue, setCurrentPage, setStartValue, setEndValue } = usePagination(
+        (state) => state
+    );
     const pageCount = Math.ceil(peopleCount / 10);
-
-    useEffect(() => {
-        getPeople(currentPage);
-    }, [currentPage, getPeople]);
 
     const pageNumbers = useMemo(() => {
         const firstThree = [1, 2, 3];
@@ -39,16 +33,14 @@ const Pagination: React.FC<Props> = ({ peopleCount, getPeople = () => {} }) => {
         }
 
         return getNumbers(startValue, endValue);
-    }, [currentPage, endValue, pageCount, startValue]);
+    }, [currentPage, endValue, pageCount, setEndValue, setStartValue, startValue]);
 
     const getPreviousPage = () => {
-        setCurrentPage((prevState) => (prevState !== 1 ? prevState - 1 : prevState));
+        setCurrentPage(currentPage !== 1 ? currentPage - 1 : currentPage);
     };
 
     const getNextPage = () => {
-        setCurrentPage((prevState) => {
-            return prevState !== pageCount ? prevState + 1 : prevState;
-        });
+        setCurrentPage(currentPage !== pageCount ? currentPage + 1 : currentPage);
     };
 
     return (
