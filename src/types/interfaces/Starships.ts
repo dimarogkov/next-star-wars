@@ -1,3 +1,9 @@
+export interface IStarshipsData {
+    filmPos: number;
+    filmTitle: string;
+    starships: IStarship[];
+}
+
 export interface IStarships {
     count: number;
     results: IStarship[];
