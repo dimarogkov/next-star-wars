@@ -9,4 +9,5 @@ export interface IPerson {
     birth_year: string;
     gender: string;
     films: number[];
+    starships: number[];
 }
