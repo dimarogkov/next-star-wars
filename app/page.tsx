@@ -2,6 +2,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { usePagination } from '@/src/store/pagination';
 import { getPeople } from '@/src/services/people';
+
 import PeopleList from '@/src/components/elements/PeopleList/PeopleList';
 import Pagination from '@/src/components/elements/Pagination/Pagination';
 import { Loader } from '@/src/components/ui';

@@ -1,7 +1,9 @@
 import { useMemo } from 'react';
 import { usePagination } from '@/src/store/pagination';
 import { getNumbers } from '@/src/helpers/getNumbers';
+
 import { LuChevronLeft, LuChevronRight } from 'react-icons/lu';
+import { Pagination as UIPagination, PaginationItem } from '../../ui';
 import cn from 'classnames';
 
 type Props = {
@@ -44,49 +46,40 @@ const Pagination: React.FC<Props> = ({ peopleCount }) => {
     };
 
     return (
-        <ul className='flex justify-center gap-2'>
-            <li
-                className={cn(
-                    'flex items-center justify-center w-8 h-8 rounded border border-gray transition-colors duration-300 hover:border-black hover:text-black',
-                    {
-                        'opacity-35 pointer-events-none': currentPage === 1,
-                        'cursor-pointer': currentPage !== 1,
-                    }
-                )}
+        <UIPagination>
+            <PaginationItem
                 onClick={getPreviousPage}
+                className={cn({
+                    'opacity-35 pointer-events-none': currentPage === 1,
+                    'border-gray cursor-pointer': currentPage !== 1,
+                })}
             >
                 <LuChevronLeft />
-            </li>
+            </PaginationItem>
 
             {pageNumbers.map((pageNumber) => (
-                <li
+                <PaginationItem
                     key={pageNumber}
                     onClick={() => setCurrentPage(pageNumber)}
-                    className={cn(
-                        'flex items-center justify-center w-8 h-8 rounded border transition-colors duration-300 hover:border-black hover:text-black',
-                        {
-                            'border-black bg-black text-white pointer-events-none': pageNumber === currentPage,
-                            'border-gray cursor-pointer': pageNumber !== currentPage,
-                        }
-                    )}
+                    className={cn({
+                        'border-black bg-black text-white pointer-events-none': pageNumber === currentPage,
+                        'border-gray cursor-pointer': pageNumber !== currentPage,
+                    })}
                 >
                     {pageNumber}
-                </li>
+                </PaginationItem>
             ))}
 
-            <li
-                className={cn(
-                    'flex items-center justify-center w-8 h-8 rounded border border-gray transition-colors duration-300 hover:border-black hover:text-black',
-                    {
-                        'opacity-35 pointer-events-none': currentPage === pageCount,
-                        'cursor-pointer': currentPage !== pageCount,
-                    }
-                )}
+            <PaginationItem
                 onClick={getNextPage}
+                className={cn({
+                    'opacity-35 pointer-events-none': currentPage === pageCount,
+                    'border-gray cursor-pointer': currentPage !== pageCount,
+                })}
             >
                 <LuChevronRight />
-            </li>
-        </ul>
+            </PaginationItem>
+        </UIPagination>
     );
 };
 
