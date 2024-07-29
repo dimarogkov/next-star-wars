@@ -1,6 +1,8 @@
-# Next Template
+# Star Wars
 
-This is **Next Template** for development. Technolgies used: **React, TypeScript, Tailwind CSS, Axios, React Query, React Hook Form, Yup, Lodash Debounce, Redux Toolkit, Zustand.**
+[Project Demo](https://next-countries-orpin.vercel.app/)
+
+## About
 
 ## Installation Steps
 
@@ -9,13 +11,26 @@ This is **Next Template** for development. Technolgies used: **React, TypeScript
 -   Run `npm i`
 -   Run `npm run dev`
 
+## Technolgies used
+
+-   React
+-   Next.js
+-   TypeScript
+-   Axios
+-   React Query
+-   Zustand
+-   Tailwind CSS
+
 ## File Structure
 
 -   app
-    -   pages
+    -   [personId]
+        -   Person Details Page
+    -   Home Page
 -   src
     -   components
         -   elements
+        -   root
         -   ui
     -   helpers
     -   services
