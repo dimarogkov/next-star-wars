@@ -37,7 +37,7 @@ const PersonFlow: React.FC<Props> = ({ personId }) => {
 
     const { data: starships } = useQuery({
         queryFn: () => getStarships(),
-        select: (data) => data.data.results,
+        select: (data) => data,
         queryKey: ['starships'],
     });
 
