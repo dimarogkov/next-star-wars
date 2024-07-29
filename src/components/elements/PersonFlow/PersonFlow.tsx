@@ -1,15 +1,12 @@
 'use client';
 import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { IEdge, INode } from '@/src/types/interfaces/Flow';
 
 import { getPerson } from '@/src/services/people';
 import { getFilms } from '@/src/services/films';
 import { getStarships } from '@/src/services/starships';
-
-import { getEdges } from '@/src/helpers/getEdges';
-import { getNodes } from '@/src/helpers/getNodes';
-import { getPersonStarships } from '@/src/helpers/getPersonStarships';
+import { IEdge, INode } from '@/src/types/interfaces/Flow';
+import { getFlowData } from '@/src/helpers/getFlowData';
 
 import { Background, BackgroundVariant, Controls, ReactFlow, useEdgesState, useNodesState } from '@xyflow/react';
 import { Loader } from '../../ui';
@@ -43,29 +40,10 @@ const PersonFlow: React.FC<Props> = ({ personId }) => {
 
     useEffect(() => {
         if (person && films && starships) {
-            const personFilms = films.filter(({ id }) => person.films.includes(id));
-            const personStarships = getPersonStarships(person, personFilms, starships);
-            const modifyNodes = getNodes(person, personFilms, personStarships);
+            const { flowNodes, flowEdges } = getFlowData(person, films, starships);
 
-            const personFilmsOptions = { source: person.name, target: films.map(({ title }) => title) };
-            const personFilmsEdges = getEdges(personFilmsOptions);
-
-            const firmStarshipsEdges: IEdge[] = [];
-            personStarships.forEach((personStarship) => {
-                if (personStarship.starships.length === 0) {
-                    return null;
-                }
-
-                const filmStarshipsOptions = {
-                    source: personStarship.filmTitle,
-                    target: personStarship.starships.map(({ name }) => name),
-                };
-
-                firmStarshipsEdges.push(...getEdges(filmStarshipsOptions));
-            });
-
-            setNodes(modifyNodes);
-            setEdges([...personFilmsEdges, ...firmStarshipsEdges]);
+            setNodes(flowNodes);
+            setEdges(flowEdges);
         }
     }, [films, person, setEdges, setNodes, starships]);
 
