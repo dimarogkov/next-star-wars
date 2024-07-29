@@ -4,7 +4,6 @@ import { getNumbers } from '@/src/helpers/getNumbers';
 
 import { LuChevronLeft, LuChevronRight } from 'react-icons/lu';
 import { Pagination as UIPagination, PaginationItem } from '../../ui';
-import cn from 'classnames';
 
 type Props = {
     peopleCount: number;
@@ -49,10 +48,7 @@ const Pagination: React.FC<Props> = ({ peopleCount }) => {
         <UIPagination>
             <PaginationItem
                 onClick={getPreviousPage}
-                className={cn({
-                    'opacity-35 pointer-events-none': currentPage === 1,
-                    'border-gray cursor-pointer': currentPage !== 1,
-                })}
+                className={currentPage === 1 ? 'opacity-35 pointer-events-none' : 'border-gray cursor-pointer'}
             >
                 <LuChevronLeft />
             </PaginationItem>
@@ -61,10 +57,11 @@ const Pagination: React.FC<Props> = ({ peopleCount }) => {
                 <PaginationItem
                     key={pageNumber}
                     onClick={() => setCurrentPage(pageNumber)}
-                    className={cn({
-                        'border-black bg-black text-white pointer-events-none': pageNumber === currentPage,
-                        'border-gray cursor-pointer': pageNumber !== currentPage,
-                    })}
+                    className={
+                        pageNumber === currentPage
+                            ? 'border-black bg-black text-white pointer-events-none'
+                            : 'border-gray cursor-pointer'
+                    }
                 >
                     {pageNumber}
                 </PaginationItem>
@@ -72,10 +69,7 @@ const Pagination: React.FC<Props> = ({ peopleCount }) => {
 
             <PaginationItem
                 onClick={getNextPage}
-                className={cn({
-                    'opacity-35 pointer-events-none': currentPage === pageCount,
-                    'border-gray cursor-pointer': currentPage !== pageCount,
-                })}
+                className={currentPage === pageCount ? 'opacity-35 pointer-events-none' : 'border-gray cursor-pointer'}
             >
                 <LuChevronRight />
             </PaginationItem>
