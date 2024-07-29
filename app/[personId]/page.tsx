@@ -20,7 +20,7 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 const PersonPage: React.FC<Props> = ({ params }) => {
     return (
         <section className='relative w-full'>
-            <div className='w-full mb-8 last:mb-0'>
+            <div className='w-full mb-5 md:mb-6 lg:mb-8 last:mb-0'>
                 <BtnLink href='/' className='mb-5 last:mb-0'>
                     Back
                 </BtnLink>
