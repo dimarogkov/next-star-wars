@@ -1,6 +1,6 @@
 # Star Wars
 
-[Project Demo](https://next-star-wars-7moy7jg7l-dimarogkovs-projects.vercel.app/)
+[Project Demo](https://next-star-wars-two.vercel.app/)
 
 ## About
 
