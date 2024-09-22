@@ -52,7 +52,7 @@ const PersonFlow: React.FC<Props> = ({ personId }) => {
             {isLoading && <Loader />}
 
             {person && (
-                <div className={`w-full h-[600px] rounded-lg overflow-hidden border border-gray`}>
+                <div className={`w-full h-[600px] text-black rounded-lg overflow-hidden border border-gray`}>
                     <ReactFlow nodes={nodes} edges={edges} onNodesChange={onNodesChange}>
                         <Controls />
                         <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
