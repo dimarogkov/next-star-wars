@@ -10,7 +10,7 @@ const PaginationItem: React.FC<Props> = forwardRef<HTMLLIElement, Props>(({ clas
         ref={ref}
         {...props}
         className={cn(
-            `flex items-center justify-center w-8 h-8 rounded border transition-all duration-300 hover:border-black hover:text-black ${className}`
+            `flex items-center justify-center w-8 h-8 rounded border transition-all duration-300 hover:border-black hover:bg-black hover:text-white ${className}`
         )}
     />
 ));
