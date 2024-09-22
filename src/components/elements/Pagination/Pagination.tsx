@@ -60,7 +60,7 @@ const Pagination: React.FC<Props> = ({ peopleCount }) => {
                     className={
                         pageNumber === currentPage
                             ? 'border-black bg-black text-white pointer-events-none'
-                            : 'border-gray cursor-pointer'
+                            : 'border-gray text-black cursor-pointer'
                     }
                 >
                     {pageNumber}
