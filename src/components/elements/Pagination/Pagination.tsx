@@ -48,7 +48,9 @@ const Pagination: React.FC<Props> = ({ peopleCount }) => {
         <UIPagination>
             <PaginationItem
                 onClick={getPreviousPage}
-                className={currentPage === 1 ? 'opacity-35 pointer-events-none' : 'border-gray cursor-pointer'}
+                className={
+                    currentPage === 1 ? 'opacity-35 pointer-events-none' : 'border-gray text-black cursor-pointer'
+                }
             >
                 <LuChevronLeft />
             </PaginationItem>
@@ -69,7 +71,11 @@ const Pagination: React.FC<Props> = ({ peopleCount }) => {
 
             <PaginationItem
                 onClick={getNextPage}
-                className={currentPage === pageCount ? 'opacity-35 pointer-events-none' : 'border-gray cursor-pointer'}
+                className={
+                    currentPage === pageCount
+                        ? 'opacity-35 pointer-events-none'
+                        : 'border-gray text-black cursor-pointer'
+                }
             >
                 <LuChevronRight />
             </PaginationItem>
