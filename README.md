@@ -22,7 +22,7 @@ Join us and become part of the galactic adventure today!
 ## Installation Steps
 
 -   Download the repository
--   Use the 18th version of Node.js
+-   Use the v18.20.2 version of Node.js
 -   Run `npm i`
 -   Run `npm run dev`
 
